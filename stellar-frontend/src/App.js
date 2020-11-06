@@ -1,32 +1,57 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './containers/Home.js';
+import Login from './containers/Login.js';
+import Project from './containers/Project.js';
+import { Component } from 'react';
 
-function App() {
+export default class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      apodImg: '',
+      results: []
+    }
+  }
 
-fetch("http://localhost:3000/resources")
-.then(res=>res.json())
-.then(data => console.log(data[0]))
- 
+  componentDidMount() {
+    fetch("http://localhost:3000/resources/apod")
+    .then(res=>res.json())
+    .then(data => {
+      this.setState({
+        apodImg: data.apod
+      })
+    })
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  searchChange = (e) => {
+    let searchTerm = e.target.value
+    fetch("http://localhost:3000/resources/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept":"application/json"
+      },
+      body:JSON.stringify({
+        searchTerm: searchTerm
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        results: data
+      })
+    })
+  }
+
+  render() {
+    return (
+        <Home
+        apodImg={this.state.apodImg}
+        searchChange={this.searchChange}
+        results={this.state.results}
+          />
+    );
+  }
 }
 
-export default App;

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :resources
+  resources :resources, only: [:index]
   resources :users
   resources :messages
   resources :projects
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  get '/resources/apod', to: 'resources#apod'
+  post '/resources/search', to: 'resources#search'
 end
