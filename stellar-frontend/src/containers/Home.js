@@ -7,9 +7,11 @@ export default class Home extends React.Component{
 
     render(){
         return(
-            <div className='home-screen' style={{backgroundImage: `url(${this.props.apodImg})`}}>
+            <div className='home-screen' style={{background: `url(${this.props.apodImg}) no-repeat center center
+            fixed`}}>
+
                 <SearchBar searchChange={this.props.searchChange}/>
-                <Carousel results={this.props.results} />
+                {/* <Carousel results={this.props.results} /> */}
             </div>
         )
     }

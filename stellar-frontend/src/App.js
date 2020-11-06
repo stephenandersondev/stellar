@@ -3,6 +3,7 @@ import Home from './containers/Home.js';
 import Login from './containers/Login.js';
 import Project from './containers/Project.js';
 import { Component } from 'react';
+// import {BrowserRouter, Route, Switch, NavLink} from 'react-router-dom'
 
 export default class App extends Component {
 
@@ -46,11 +47,11 @@ export default class App extends Component {
 
   render() {
     return (
-        <Home
-        apodImg={this.state.apodImg}
-        searchChange={this.searchChange}
-        results={this.state.results}
-          />
+      <Home
+      apodImg={this.state.apodImg}
+      searchChange={this.searchChange}
+      results={this.state.results}
+      />
     );
   }
 }
