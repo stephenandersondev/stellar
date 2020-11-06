@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.home-page {
+  height: 100vh;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.search-bar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh; 
+}

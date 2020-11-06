@@ -10,4 +10,10 @@ class Resource < ApplicationRecord
     response.parsed_response["url"]
   end
 
+  def self.get_search(term)
+    url = "https://images-api.nasa.gov/search?q=#{term}"
+    response = HTTParty.get(url)
+    response.parsed_response
+  end
+
 end
