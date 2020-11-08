@@ -9,6 +9,6 @@ class ResourcesController < ApplicationController
 
     def search
         search = Resource.get_search(params[:searchTerm])
-        render json: {results: search}
+        render json: {results:search}
     end 
 end
