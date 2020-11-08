@@ -17,40 +17,48 @@ export default class App extends Component {
 
   componentDidMount() {
     fetch("http://localhost:3000/resources/apod")
-    .then(res=>res.json())
-    .then(data => {
-      this.setState({
-        apodImg: data.apod
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          apodImg: data.apod
+        })
       })
-    })
   }
 
   searchChange = (e) => {
     let searchTerm = e.target.value
-    fetch("http://localhost:3000/resources/search", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept":"application/json"
-      },
-      body:JSON.stringify({
-        searchTerm: searchTerm
+    console.log(searchTerm)
+    if (searchTerm != "") {
+      fetch("http://localhost:3000/resources/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          searchTerm: searchTerm
+        })
       })
-    })
-    .then(res => res.json())
-    .then(data => {
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            results: data
+          })
+        })
+    }
+    else{
       this.setState({
-        results: data
+        results:[]
       })
-    })
+    }
   }
 
   render() {
     return (
       <Home
-      apodImg={this.state.apodImg}
-      searchChange={this.searchChange}
-      results={this.state.results}
+        apodImg={this.state.apodImg}
+        searchChange={this.searchChange}
+        results={this.state.results}
       />
     );
   }
