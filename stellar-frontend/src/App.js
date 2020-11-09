@@ -96,7 +96,7 @@ export default class App extends Component {
                 searchChange={this.searchChange}
                 results={this.state.results}
               />} />
-            <Route exact path='/login' render={routerProps => <Redirect to="/" />} />
+            <Route exact path='/login' render={routerProps => <Redirect to="/"/>} />
             <Route exact path='/project' component={Project} />
           </div>
         </Router>
