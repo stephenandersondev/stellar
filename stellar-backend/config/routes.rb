@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   
   get '/resources/apod', to: 'resources#apod'
   post '/resources/search', to: 'resources#search'
+  post '/auth', to: 'auth#create'
 end
