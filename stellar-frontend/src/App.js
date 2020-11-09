@@ -4,7 +4,7 @@ import Login from './containers/Login.js';
 import Project from './containers/Project.js';
 import { Component } from 'react';
 import NavBar from './components/NavBar.js'
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 
 export default class App extends Component {
@@ -96,7 +96,7 @@ export default class App extends Component {
                 searchChange={this.searchChange}
                 results={this.state.results}
               />} />
-            <Route exact path='/login' render={routerProps => <Login login={this.login} />} />
+            <Route exact path='/login' render={routerProps => <Redirect to="/" />} />
             <Route exact path='/project' component={Project} />
           </div>
         </Router>
