@@ -1,35 +1,21 @@
-const Navbar = () =>
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+
+const Navbar = (props) =>
   <div>
         <NavLink
         to="/"
         exact
-        style={link}
-        activeStyle={{
-            background: 'darkblue'
-        }}
         >Home</NavLink>
         <NavLink
-        to="/about"
+        to="/project"
         exact
-        style={link}
-        activeStyle={{
-            background: 'darkblue'
-        }}
-        >About</NavLink>
+        >Project</NavLink>
         <NavLink
         to="/login"
         exact
-        style={link}
-        activeStyle={{
-            background: 'darkblue'
-        }}
-        >Login</NavLink>
-        <NavLink
-        to="/messages"
-        exact
-        style={link}
-        activeStyle={{
-            background: 'darkblue'
-        }}
-        >Messages</NavLink>
+        onClick={props.logout}
+        >Logout</NavLink>
     </div>;
+
+export default Navbar

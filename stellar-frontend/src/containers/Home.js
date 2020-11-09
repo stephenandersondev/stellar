@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar.js'
 import Carousel from 'react-elastic-carousel'
 import Card from '../components/Card.js'
 
+
 export default class Home extends React.Component{
 
     render(){
@@ -23,7 +24,6 @@ export default class Home extends React.Component{
         return(
             <div className='home-screen' style={{background: `url(${this.props.apodImg}) no-repeat center center
             fixed`}}>
-
                 <SearchBar searchChange={this.props.searchChange}/>
                 <Carousel breakPoints={breakPoints}>
                     {returnItems.filter(item=>item.links).map(item => <Card item={item} />)}
