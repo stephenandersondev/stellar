@@ -13,7 +13,9 @@ function Login(props) {
     }
 
     return (
-        <Container className="center">
+        // <div style={{ justifyContent:"center", alignItems:"center"}}>
+        <Container align="center" background={{background: `url(${props.apodImg}) no-repeat center center
+        fixed`}}>
             <Image src={Logo} alt="Logo" height="250" width="auto" />
             <Form onSubmit={(props.login)}>
                 <Form.Group controlId="forUsername">
@@ -28,6 +30,7 @@ function Login(props) {
             </Form>
                 <Button onClick={routeChange} className="mt-4" variant="secondary" type="button">Sign Up</Button>
         </Container>
+        // </div>
     )
 }
 export default withRouter(Login)
