@@ -12,29 +12,35 @@ function Signup(props) {
         history.push(path);
     }
     return (
-    
-        <Container className="center">
+        <div className='home-screen' style={{
+            background: `url(${props.apodImg}) no-repeat center center
+        fixed`, backgroundRepeat:"no-repeat", backgroundSize:"cover", height:"100vh"}}>
+        <Container align="center">
             <Image src={Logo} alt="Logo" height="250" width="auto" />
             <Form onSubmit={(props.signup)}>
                 <Form.Group controlId="forUsername">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="text" placeholder="Choose a username" />
+                    <Form.Control type="text" placeholder="Choose a username" required />
                 </Form.Group>
                 <Form.Group controlId="formPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Choose a Password" />
+                    <Form.Control type="password" placeholder="Choose a Password" required/>
                 </Form.Group>
                 <Form.Group controlId="forProject">
                     <Form.Label>Project</Form.Label>
-                    <Form.Control as="select" multiple>
+                    <Form.Control as="select" multiple required>
                     {props.projects.map(project => <option value={project.id}>{project.title} - {project.description}</option>)}
                     </Form.Control>
                 </Form.Group>
                 <Button variant="primary" type="submit">Sign up</Button>
             </Form>
             <Button onClick={() => routeChange('login')} className="mt-4" variant="secondary" type="button">Existing User Login</Button>
+            <>
+            <br></br>
+            </>
             <Button onClick={() => routeChange('newproject')} className="mt-4" variant="secondary" type="button">New Project</Button>
         </Container>
+        </div>
     )
 }
 
