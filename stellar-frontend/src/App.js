@@ -1,11 +1,12 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './containers/Home.js';
 import Login from './containers/Login.js';
 import Signup from './containers/Signup.js'
 import Project from './containers/Project.js';
 import { Component } from 'react';
 import NavBar from './components/NavBar.js'
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 
 export default class App extends Component {
@@ -88,7 +89,6 @@ export default class App extends Component {
   }
 
   logout = () => {
-    console.log("we out")
     localStorage.token = null
     this.setState({
       isLoggedIn: false,
@@ -136,14 +136,17 @@ export default class App extends Component {
                 searchChange={this.searchChange}
                 results={this.state.results}
               />} />
-            <Route exact path='/login' render={routerProps => <Login login={this.login} />} />
             <Route exact path='/signup' render={routerProps => <Signup signup={this.signup} />} />
+            <Route exact path='/login' render={routerProps => <Redirect to="/"/>} />
             <Route exact path='/project' component={Project} />
           </div>
         </Router>
       )
     } else {
-      return (<Login login={this.login} />)
+      return (<Login 
+        login={this.login}
+        apodImg={this.state.apodImg}
+         />)
     }
   }
 }
