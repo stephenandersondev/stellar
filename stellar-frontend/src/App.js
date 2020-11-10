@@ -134,6 +134,7 @@ export default class App extends Component {
         <Router>
           <div>
             <NavBar logout={this.logout} />
+            <Route path='/signup' render={routerProps => <Redirect to="/"/>}/>
             <Route exact path='/' render={routerProps =>
               <Home
                 apodImg={this.state.apodImg}

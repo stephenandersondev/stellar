@@ -9,10 +9,9 @@ function Login(props) {
 
     const routeChange = () => {
         let path = `/signup`;
-        console.log(path)
         history.push(path);
     }
-    console.log(history)
+
     return (
         <Container className="center">
             <Image src={Logo} alt="Logo" height="250" width="auto" />
