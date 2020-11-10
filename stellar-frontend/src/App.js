@@ -40,22 +40,22 @@ export default class App extends Component {
     fetch('http://localhost:3000/auth', {
       method: 'POST',
       headers: {
-        "Content-Type":"application/json",
-        "Accept":"application/json"
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify(session)
     })
-    .then(res => res.json())
-    .then(userInfo => {
-      if(!userInfo.error){
-      localStorage.token = userInfo.jwt
-      this.setState({
-        isLoggedIn: true,
-        currentUser: userInfo.user
+      .then(res => res.json())
+      .then(userInfo => {
+        if (!userInfo.error) {
+          localStorage.token = userInfo.jwt
+          this.setState({
+            isLoggedIn: true,
+            currentUser: userInfo.user
+          })
+        }
+        else { console.log(userInfo) }
       })
-      }
-      else{console.log(userInfo)}
-    })
   }
 
   signup = (e) => {
@@ -70,22 +70,22 @@ export default class App extends Component {
     fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
-        "Content-Type":"application/json",
-        "Accept":"application/json"
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify(newUser)
     })
-    .then(res => res.json())
-    .then(userInfo => {
-      if(!userInfo.error){
-      localStorage.token = userInfo.jwt
-      this.setState({
-        isLoggedIn: true,
-        currentUser: userInfo.user
+      .then(res => res.json())
+      .then(userInfo => {
+        if (!userInfo.error) {
+          localStorage.token = userInfo.jwt
+          this.setState({
+            isLoggedIn: true,
+            currentUser: userInfo.user
+          })
+        }
+        else { console.log(userInfo) }
       })
-      }
-      else{console.log(userInfo)}
-    })
   }
 
   logout = () => {
@@ -125,28 +125,38 @@ export default class App extends Component {
   }
 
   render() {
+    //We have 2 routers -- one for logged in, and one for logged out 
+    // in logged out -> '/' is log in component
+    // in logged in -> '/' is the home page 
+
     if (this.state.isLoggedIn === true) {
       return (
         <Router>
           <div>
-            <NavBar logout={this.logout}/>
+            <NavBar logout={this.logout} />
             <Route exact path='/' render={routerProps =>
               <Home
                 apodImg={this.state.apodImg}
                 searchChange={this.searchChange}
                 results={this.state.results}
               />} />
-            <Route exact path='/signup' render={routerProps => <Signup signup={this.signup} />} />
-            <Route exact path='/login' render={routerProps => <Redirect to="/"/>} />
             <Route exact path='/project' component={Project} />
           </div>
         </Router>
       )
     } else {
-      return (<Login 
-        login={this.login}
-        apodImg={this.state.apodImg}
-         />)
+      return (
+        <Router>
+          <div> 
+            <Route exact path='/login' render={routerProps => <Redirect to="/" />} />
+            <Route exact path='/signup' render={routerProps => <Signup signup={this.signup}/>}/>
+            <Route exact path='/' render={routerProps => <Login
+              login={this.login}
+              apodImg={this.state.apodImg}
+            />}/>
+          </div>
+        </Router>
+      )
     }
   }
 }
