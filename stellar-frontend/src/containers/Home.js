@@ -23,7 +23,7 @@ export default class Home extends React.Component{
 
         return(
             <div className='home-screen' style={{background: `url(${this.props.apodImg}) no-repeat center center
-            fixed`}}>
+            fixed`, backgroundRepeat:"no-repeat", backgroundSize:"cover", height:"100vh"}}>
                 <SearchBar searchChange={this.props.searchChange}/>
                 <Carousel breakPoints={breakPoints}>
                     {returnItems.filter(item=>item.links).map(item => <Card item={item} />)}

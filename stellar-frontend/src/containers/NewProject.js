@@ -12,22 +12,25 @@ function NewProject(props) {
         history.push(path);
     }
     return (
-    
-        <Container className="center">
+        <div className='home-screen' style={{
+            background: `url(${props.apodImg}) no-repeat center center
+        fixed`, backgroundRepeat:"no-repeat", backgroundSize:"cover", height:"100vh"}}>
+        <Container align="center">
             <Image src={Logo} alt="Logo" height="250" width="auto" />
-            <Form onSubmit={(props.newproject)}>
+            <Form onSubmit={(props.newProject)}>
                 <Form.Group controlId="forTitle">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" />
+                    <Form.Control type="text" placeholder="Title" required />
                 </Form.Group>
                 <Form.Group controlId="formDescription">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control type="text" placeholder="Description" />
+                    <Form.Control type="text" placeholder="Description" required />
                 </Form.Group>
                 <Button variant="primary" type="submit">Add Project</Button>
             </Form>
             <Button onClick={routeChange} className="mt-4" variant="secondary" type="button">User Sign Up</Button>
         </Container>
+        </div>
     )
 }
 

@@ -135,16 +135,16 @@ export default class App extends Component {
       description: e.target[1].value,
     }
     console.log(newProject)
-    // fetch('http://localhost:3000/projects', {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Accept": "application/json"
-    //   },
-    //   body: JSON.stringify(newProject)
-    // })
-    // .then(res => res.json())
-    // .then(console.log)
+    fetch('http://localhost:3000/projects', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(newProject)
+    })
+    .then(res => res.json())
+    .then(console.log)
   }
 
   render() {
@@ -179,6 +179,7 @@ export default class App extends Component {
             <Route exact path='/signup' render={routerProps => <Signup
              signup={this.signup}
              projects={this.state.projects}
+             apodImg={this.state.apodImg}
              />}/>
 
             <Route exact path='/' render={routerProps => <Login
@@ -186,7 +187,10 @@ export default class App extends Component {
               apodImg={this.state.apodImg}
             />}/>
             
-            <Route exact path='/newproject' component={()=><NewProject newProject={this.newProject}/>}/>
+            <Route exact path='/newproject' component={()=><NewProject 
+            newProject={this.newProject}
+            apodImg={this.state.apodImg}
+            />}/>
           </div>
         </Router>
       )
