@@ -1,12 +1,13 @@
 class ResourcesController < ApplicationController
-    skip_before_action :authorized, only: [:apod]
+    skip_before_action :authorized, only: [:init]
     
     def index
     end
 
-    def apod
+    def init
         apod = Resource.get_apod
-        render json: {apod: apod}
+        projects = Project.all
+        render json: {apod: apod, projects: projects}
     end 
 
     def search

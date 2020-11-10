@@ -7,6 +7,7 @@ import Project from './containers/Project.js';
 import { Component } from 'react';
 import NavBar from './components/NavBar.js'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import NewProject from './containers/NewProject';
 
 
 export default class App extends Component {
@@ -17,16 +18,19 @@ export default class App extends Component {
       apodImg: '',
       results: [],
       isLoggedIn: false,
-      currentUser: null
+      currentUser: null,
+      projects: []
     }
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/resources/apod")
+    //Should return apod image and list of projects
+    fetch("http://localhost:3000/resources/init")
       .then(res => res.json())
       .then(data => {
         this.setState({
-          apodImg: data.apod
+          apodImg: data.apod,
+          projects: data.projects
         })
       })
   }
@@ -62,11 +66,10 @@ export default class App extends Component {
     e.preventDefault();
     let newUser = {
       username: e.target[0].value,
-      password: e.target[1].value
+      password: e.target[1].value,
+      project_id: e.target[2].value,
     }
-    this.setState({
-      isLoggedIn: true
-    })
+    console.log(newUser)
     fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
@@ -104,24 +107,44 @@ export default class App extends Component {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          "Accept": "application/json",
+          'Authorization': `Bearer ${localStorage.token}`
         },
         body: JSON.stringify({
           searchTerm: searchTerm
         })
       })
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            results: data
-          })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          results: data
         })
+      })
     }
     else {
       this.setState({
         results: []
       })
     }
+  }
+
+  newProject = (e) => {
+    e.preventDefault();
+    let newProject = {
+      title: e.target[0].value,
+      description: e.target[1].value,
+    }
+    console.log(newProject)
+    // fetch('http://localhost:3000/projects', {
+    //   method: 'POST',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Accept": "application/json"
+    //   },
+    //   body: JSON.stringify(newProject)
+    // })
+    // .then(res => res.json())
+    // .then(console.log)
   }
 
   render() {
@@ -134,6 +157,7 @@ export default class App extends Component {
         <Router>
           <div>
             <NavBar logout={this.logout} />
+            {/* Covers routing from logged out Router */}
             <Route path='/signup' render={routerProps => <Redirect to="/"/>}/>
             <Route exact path='/' render={routerProps =>
               <Home
@@ -149,12 +173,20 @@ export default class App extends Component {
       return (
         <Router>
           <div> 
+            {/* Covers routing from logged in Router*/}
             <Route exact path='/login' render={routerProps => <Redirect to="/" />} />
-            <Route exact path='/signup' render={routerProps => <Signup signup={this.signup}/>}/>
+
+            <Route exact path='/signup' render={routerProps => <Signup
+             signup={this.signup}
+             projects={this.state.projects}
+             />}/>
+
             <Route exact path='/' render={routerProps => <Login
               login={this.login}
               apodImg={this.state.apodImg}
             />}/>
+            
+            <Route exact path='/newproject' component={()=><NewProject newProject={this.newProject}/>}/>
           </div>
         </Router>
       )

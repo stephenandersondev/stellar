@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :projects
   
-  get '/resources/apod', to: 'resources#apod'
+  get '/resources/init', to: 'resources#init'
   post '/resources/search', to: 'resources#search'
   post '/auth', to: 'auth#create'
 end

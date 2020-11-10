@@ -5,8 +5,7 @@ class UsersController < ApplicationController
         @user = User.create(
             username:params[:username],
             password:params[:password],
-            ##hard coded in project, need to give them a list of projects to choose from on sign up
-            project_id:1
+            project_id:params[:project_id]
         )
         if @user.valid?
             @token = encode_token(user_id: @user.id)

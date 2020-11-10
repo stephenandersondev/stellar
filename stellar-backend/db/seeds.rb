@@ -1,4 +1,5 @@
-User.destroy_all
-Project.destroy_all
-p = Project.create(title:'title',description:'asdf')
-User.create(username:'ben',password:'1234',project:p)
+
+##Projects 
+asteroid = Project.create(title:'Asteroid',description:'Beeg Rock')
+stars = Project.create(title:'Stars', description: 'Learn about Stars!')
+sun = Project.create(title:'Sun', description:'Learn about the freaking sun idk')
