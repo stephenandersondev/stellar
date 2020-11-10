@@ -6,11 +6,11 @@ import Signup from './containers/Signup.js'
 import Project from './containers/Project.js';
 import { Component } from 'react';
 import NavBar from './components/NavBar.js'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, withRouter } from 'react-router-dom'
 import NewProject from './containers/NewProject';
 
 
-export default class App extends Component {
+class App extends Component {
 
   constructor() {
     super();
@@ -129,6 +129,7 @@ export default class App extends Component {
   }
 
   newProject = (e) => {
+    console.log(this.props.history)
     e.preventDefault();
     let newProject = {
       title: e.target[0].value,
@@ -144,7 +145,12 @@ export default class App extends Component {
       body: JSON.stringify(newProject)
     })
     .then(res => res.json())
-    .then(console.log)
+    .then(newProject=> {
+      this.setState({
+      projects:[...this.state.projects,newProject.project]
+      })
+      window.history.back();}
+    )
   }
 
   render() {
@@ -159,12 +165,14 @@ export default class App extends Component {
             <NavBar logout={this.logout} />
             {/* Covers routing from logged out Router */}
             <Route path='/signup' render={routerProps => <Redirect to="/"/>}/>
+
             <Route exact path='/' render={routerProps =>
               <Home
                 apodImg={this.state.apodImg}
                 searchChange={this.searchChange}
                 results={this.state.results}
               />} />
+
             <Route exact path='/project' component={Project} />
           </div>
         </Router>
@@ -186,7 +194,7 @@ export default class App extends Component {
               login={this.login}
               apodImg={this.state.apodImg}
             />}/>
-            
+
             <Route exact path='/newproject' component={()=><NewProject 
             newProject={this.newProject}
             apodImg={this.state.apodImg}
@@ -198,3 +206,4 @@ export default class App extends Component {
   }
 }
 
+export default withRouter(App)
