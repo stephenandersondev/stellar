@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './containers/Home.js';
 import Login from './containers/Login.js';
 import Project from './containers/Project.js';
@@ -50,7 +51,6 @@ export default class App extends Component {
   }
 
   logout = () => {
-    console.log("we out")
     this.setState({
       isLoggedIn: false
     })
@@ -102,7 +102,10 @@ export default class App extends Component {
         </Router>
       )
     } else {
-      return (<Login login={this.login} />)
+      return (<Login 
+        login={this.login}
+        apodImg={this.state.apodImg}
+         />)
     }
   }
 }
