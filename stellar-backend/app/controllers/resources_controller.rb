@@ -1,4 +1,6 @@
 class ResourcesController < ApplicationController
+    skip_before_action :authorized, only: [:apod]
+    
     def index
     end
 
