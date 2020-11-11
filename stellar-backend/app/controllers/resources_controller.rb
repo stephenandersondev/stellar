@@ -7,7 +7,7 @@ class ResourcesController < ApplicationController
     def init
         apod = Resource.get_apod
         projects = Project.all
-        render json: {apod: apod, projects: projects}
+        render json: {apod:apod, projects:projects}
     end 
 
     def search
