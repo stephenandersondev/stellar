@@ -10,16 +10,17 @@ import { BrowserRouter as Router, Route, Redirect, withRouter } from 'react-rout
 import NewProject from './containers/NewProject';
 
 
-class App extends Component {
+export default class App extends Component {
 
   constructor() {
     super();
     this.state = {
       apodImg: '',
       results: [],
+      projects: [],
       isLoggedIn: false,
       currentUser: null,
-      projects: []
+      currentProject: null
     }
   }
 
@@ -55,11 +56,16 @@ class App extends Component {
           localStorage.token = userInfo.jwt
           this.setState({
             isLoggedIn: true,
-            currentUser: userInfo.user
+            currentUser: userInfo.user,
+            currentProject: this.findCurrentProject(userInfo.user)
           })
         }
         else { console.log(userInfo) }
       })
+  }
+
+  findCurrentProject = (user) => {
+    return (this.state.projects.filter(project => project.id === user.project_id))[0]
   }
 
   signup = (e) => {
@@ -84,7 +90,8 @@ class App extends Component {
           localStorage.token = userInfo.jwt
           this.setState({
             isLoggedIn: true,
-            currentUser: userInfo.user
+            currentUser: userInfo.user,
+            currentProject: this.findCurrentProject(userInfo.user)
           })
         }
         else { console.log(userInfo) }
@@ -162,7 +169,9 @@ class App extends Component {
       return (
         <Router>
           <div>
+
             <NavBar logout={this.logout} />
+
             {/* Covers routing from logged out Router */}
             <Route path='/signup' render={routerProps => <Redirect to="/"/>}/>
 
@@ -173,7 +182,7 @@ class App extends Component {
                 results={this.state.results}
               />} />
 
-            <Route exact path='/project' component={Project} />
+            <Route exact path='/project' component={() => <Project project={this.state.currentProject}/>}/>
           </div>
         </Router>
       )
@@ -206,4 +215,3 @@ class App extends Component {
   }
 }
 
-export default withRouter(App)
