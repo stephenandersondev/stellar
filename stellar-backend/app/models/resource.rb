@@ -1,7 +1,7 @@
 class Resource < ApplicationRecord
+
   belongs_to :project
   belongs_to :user
-
 
   def self.get_apod
     api_key = ENV['NASA_KEY']

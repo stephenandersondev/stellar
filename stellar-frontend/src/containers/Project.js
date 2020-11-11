@@ -5,8 +5,7 @@ import BoardCard from '../components/BoardCard.js'
 
 export default class Project extends React.Component{
     render(){
-        let project = this.props.project
-        console.log(project)
+        let {project, resources} = this.props
         return(
             <div>
                 <main className="flexbox">

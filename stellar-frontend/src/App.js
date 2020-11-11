@@ -20,7 +20,8 @@ export default class App extends Component {
       projects: [],
       isLoggedIn: false,
       currentUser: null,
-      currentProject: null
+      currentProject: null,
+      currentResources: []
     }
   }
 
@@ -29,6 +30,7 @@ export default class App extends Component {
     fetch("http://localhost:3000/resources/init")
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         this.setState({
           apodImg: data.apod,
           projects: data.projects
@@ -57,7 +59,8 @@ export default class App extends Component {
           this.setState({
             isLoggedIn: true,
             currentUser: userInfo.user,
-            currentProject: this.findCurrentProject(userInfo.user)
+            currentProject: userInfo.project,
+            currentResources: userInfo.resources
           })
         }
         else { console.log(userInfo) }
@@ -183,7 +186,12 @@ export default class App extends Component {
                 results={this.state.results}
               />} />
 
-            <Route exact path='/project' component={() => <Project project={this.state.currentProject}/>}/>
+            <Route exact path='/project' component={() => <Project 
+              project={this.state.currentProject} 
+              resources={this.state.currentResources}
+              />}
+            />
+
           </div>
         </Router>
       )
