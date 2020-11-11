@@ -1,11 +1,9 @@
 import { Component } from 'react';
 
-const Card = ({ item }) => {
+const Card = ({ item, displayDetails }) => {
     return(
-    <div className='card'>
-        <img src={item.links[0]["href"]} alt='broken'/>
-        <span><img src={item.links[0]["href"]} alt='broken' />
-		<figcaption>{item.data[0]["title"]}</figcaption></span>
+    <div onClick={() => displayDetails(item)} className='card'>
+        <img src={item.links[0]["href"]} alt='broken' />
     </div>
     )
 }
