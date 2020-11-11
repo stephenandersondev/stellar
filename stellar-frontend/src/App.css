@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
 
 .App-header {
@@ -98,4 +99,15 @@
 
 .details-display {
   background-color: #111;
+}
+
+.flexbox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 768px;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 15px
 }
