@@ -135,6 +135,7 @@
   border-radius: 25px;
 }
 
+
 .pcard {
   height: 150px;
   width: auto;
@@ -166,4 +167,26 @@
   color: black;
   background-color: orange;
   border-radius: 25px;
+}
+
+
+.exit-button {
+  color: white;
+  background-color: orange;
+  border-radius: 25px;
+  position: absolute;
+  left: 15px;
+}
+
+.modal-container { 
+  position: relative;
+}
+
+.modal-image {
+  height: 1000px;
+  width: auto;
+}
+
+.project-carousel {
+  padding-top: 50px;
 }
