@@ -20,7 +20,7 @@ export default class Home extends React.Component {
     displayDetails = (resource) => {
         this.setState({
             detailDisplay: true,
-            detailsItem: resource.data
+            detailsItem: resource
         })
     }
 
@@ -29,7 +29,6 @@ export default class Home extends React.Component {
             detailDisplay: false
         })
     }
-
 
     render() {
 
@@ -60,10 +59,10 @@ export default class Home extends React.Component {
                          item={item} />)}
                     </Carousel>
                     <DetailDisplay
-                    className="details-display"
                     item={this.state.detailsItem}
                     exitDisplay={this.exitDisplay}
                     visible={this.state.detailDisplay}
+                    createResource={this.props.createResource}
                       />
                 </Container>
             </div >

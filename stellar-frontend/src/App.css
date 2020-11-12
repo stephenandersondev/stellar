@@ -99,6 +99,8 @@
 
 .details-display {
   background-color: #111;
+  height: 350px;
+  color: white
 }
 
 .project-container {
