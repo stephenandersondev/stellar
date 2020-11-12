@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :resources, only: [:update, :destroy]
+  resources :resources, only: [:update, :destroy, :create]
   resources :users
   resources :messages
   resources :projects

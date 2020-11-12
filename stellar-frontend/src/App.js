@@ -177,6 +177,65 @@ export default class App extends Component {
     })
   } 
 
+  createResource = (item, e) => {
+    e.preventDefault()
+   let newResource = {
+        content: e.target.content.value,
+        url: item.links[0]["href"],
+        user_id: this.state.currentUser.id,
+        project_id: this.state.currentProject.id,
+        ord_num: this.state.currentResources.length + 1
+    }
+    fetch("http://localhost:3000/resources", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(newResource)
+    })
+    .then(this.setState({
+      currentResources: [...this.state.currentResources, newResource]
+    }))
+  }
+
+  saveResources = () => {
+    const resources = this.state.currentResources
+    resources.forEach(resource => {
+        fetch(`http://localhost:3000/resources/${resource.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(resource)
+        })
+    })
+  }
+
+  editResource = (e, id) => {
+    let newContent = e.target[0].value
+    let updatedResource = this.state.currentResources.filter(resource => resource.id === id)[0]
+    updatedResource.content = newContent
+    this.setState({
+        currentResources: this.state.currentResources.map(resource =>
+            resource.id === updatedResource.id ? updatedResource : resource
+        )
+    })
+  }
+
+  reorderResources = (resource, e) => {
+    let sortedArray = this.state.currentResources.sort((a, b) => a.ord_num < b.ord_num ? -1 : 1)
+    sortedArray.splice((resource.ord_num - 1), 1)
+    sortedArray.splice((e.target.value - 1), 0, resource)
+    let newOrder = sortedArray.map((resource, index) => {
+        return Object.assign({}, resource, { ord_num: (index + 1) })
+    })
+    this.setState({
+        currentResources: newOrder
+    })
+  }
+
   render() {
     //We have 2 routers -- one for logged in, and one for logged out 
     // in logged out -> '/' is log in component
@@ -196,6 +255,7 @@ export default class App extends Component {
               <Home
                 apodImg={this.state.apodImg}
                 searchChange={this.searchChange}
+                createResource={this.createResource}
                 results={this.state.results}
               />} />
 
@@ -203,6 +263,9 @@ export default class App extends Component {
               project={this.state.currentProject} 
               resources={this.state.currentResources}
               deleteResource={this.deleteResource}
+              saveResources={this.saveResources}
+              editResource={this.editResource}
+              reorder={this.reorderResources}
               />}
             />
 
