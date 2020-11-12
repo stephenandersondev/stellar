@@ -1,40 +1,42 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Carousel } from 'react-bootstrap'
 import ProjectCard from '../components/ProjectCard.js'
+import Modal from 'react-modal'
 
 
 export default class Project extends React.Component {
 
-    constructor(){
+    constructor() {
         super()
-        this.state= {
-            resources: []
+        this.state = {
+            resources: [],
+            focusedResource: '',
+            modalOpen: false
         }
     }
 
-    componentDidMount(){
-        let sortedArray = this.props.resources.sort((a,b) => a.ord_num < b.ord_num ? -1 : 1)
+    componentDidMount() {
+        let sortedArray = this.props.resources.sort((a, b) => a.ord_num < b.ord_num ? -1 : 1)
         this.setState({
             resources: sortedArray
         })
     }
 
     reorderResources = (resource, e) => {
-        let sortedArray = this.state.resources.sort((a,b) => a.ord_num < b.ord_num ? -1 : 1)
+        let sortedArray = this.state.resources.sort((a, b) => a.ord_num < b.ord_num ? -1 : 1)
         sortedArray.splice((resource.ord_num - 1), 1)
         sortedArray.splice((e.target.value - 1), 0, resource)
         let newOrder = sortedArray.map((resource, index) => {
-            return Object.assign({}, resource, {ord_num: (index + 1)}) 
+            return Object.assign({}, resource, { ord_num: (index + 1) })
         })
-       this.setState({
-           resources: newOrder
-       })
+        this.setState({
+            resources: newOrder
+        })
     }
 
     saveResourceOrder = () => {
         const resources = this.state.resources
         resources.forEach(resource => {
-            console.log("I ran")
             fetch(`http://localhost:3000/resources/${resource.id}`, {
                 method: "PATCH",
                 headers: {
@@ -46,6 +48,12 @@ export default class Project extends React.Component {
         })
     }
 
+    toggleModal = () => {
+        this.setState({
+            modalOpen: !this.state.modalOpen
+        })
+    }
+
     render() {
         let { project } = this.props
         return (
@@ -53,13 +61,40 @@ export default class Project extends React.Component {
                 <Container className="project-container" align="center">
                     <h1>{project.title}</h1>
                     <button onClick={this.saveResourceOrder} className="save-button">Save</button>
-                    <button className="present-button">Present Project</button>
+                    <button onClick={this.toggleModal} className="present-button">Present Project</button>
+                    <Modal
+                        isOpen={this.state.modalOpen}
+                        style={{ overlay: { backgroundColor: 'grey' }, content: { color: "orange", backgroundColor: "#111" } }}
+                        onRequestClose={this.toggleModal}
+                    >
+                        <Container className="modal-container" align="center">
+                            <h1>{project.title}</h1>
+                            <h5>{project.description}</h5>
+                                {/* <button className="exit-button" onClick={this.toggleModal}>Exit Presentation</button> */}
+                            <Carousel className="project-carousel" interval={null} >
+                                {this.state.resources.map(resource =>
+                                    <Carousel.Item>
+                                        <img
+                                            className="modal-image"
+                                            src={resource.url}
+                                            alt="slide"
+                                        />
+                                        <Carousel.Caption>
+                                            <p>{resource.content}</p>
+                                        </Carousel.Caption>
+                                    </Carousel.Item>
+                                )}
+                            </Carousel>
+                        </Container>
+                    </Modal>
                     <div className="resource-container">
-                    {this.state.resources.map(resource => <ProjectCard
-                        resource={resource}
-                        resources={this.state.resources}
-                        reorder={this.reorderResources}
-                    />)}
+                        {this.state.resources.map(resource => <ProjectCard
+                            resource={resource}
+                            resources={this.state.resources}
+                            reorder={this.reorderResources}
+                            editContentIn={this.editContentIn}
+                            editContentOut={this.editContentOut}
+                        />)}
                     </div>
                 </Container>
             </div>

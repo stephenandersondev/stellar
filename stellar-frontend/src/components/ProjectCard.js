@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function ProjectCard({ resource, resources, reorder }) {
+export default function ProjectCard({ resource, resources, reorder, editContentIn, editContentOut }) {
     return (
     <div className="pcard">
         <img className="pcard-img" src={resource.url} />
         <div>
-        <p className="pcard-text">{resource.content}</p>
+        <p className='pcard-text' >{resource.content}</p>
         <button className="pcard-button">Edit Content</button>
         </div>
         <select onChange={(e) => reorder(resource, e)} value={resource.ord_num}>
