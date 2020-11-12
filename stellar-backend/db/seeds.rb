@@ -6,10 +6,23 @@
 
 
 #Resources
-Resource.create(
-    url:"https://cdn.spacetelescope.org/archives/images/wallpaper2/heic2007a.jpg",
-    content:"This image is one of the most photogenic examples of the many turbulent stellar nurseries the NASA/ESA Hubble Space Telescope has observed during its 30-year lifetime. The portrait features the giant nebula NGC 2014 and its neighbour NGC 2020 which together form part of a vast star-forming region in the Large Magellanic Cloud, a satellite galaxy of the Milky Way, approximately 163 000 light-years away.",
-    ord_num: 3,
-    user_id: 6,
-    project_id: 8
-) 
+# Resource.create(
+#     url:"https://cdn.spacetelescope.org/archives/images/wallpaper2/heic2007a.jpg",
+#     content:"This image is one of the most photogenic examples of the many turbulent stellar nurseries the NASA/ESA Hubble Space Telescope has observed during its 30-year lifetime. The portrait features the giant nebula NGC 2014 and its neighbour NGC 2020 which together form part of a vast star-forming region in the Large Magellanic Cloud, a satellite galaxy of the Milky Way, approximately 163 000 light-years away.",
+#     ord_num: 3,
+#     user_id: 6,
+#     project_id: 4
+# ) 
+
+Resource.destroy_all
+counter = 1 
+until counter == 6 do
+    Resource.create(
+        url:"https://picsum.photos/200/300",
+        content:"Test content :)",
+        ord_num: counter,
+        user_id: 1,
+        project_id: 4
+    )
+    counter += 1 
+end 

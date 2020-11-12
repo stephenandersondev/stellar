@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :resources
+  resources :resources, only: [:update, :destroy]
   resources :users
   resources :messages
   resources :projects
+  
   
   get '/resources/init', to: 'resources#init'
   post '/resources/search', to: 'resources#search'
