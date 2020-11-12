@@ -101,13 +101,69 @@
   background-color: #111;
 }
 
-.flexbox {
+.project-container {
+  background-color: #111;
+  height: 90vh;
+  margin-top: 20px;
+  color: orange;
+  position: relative;
+}
+
+.card-text {
+  background-color: orange;
+}
+
+.resource-container {
+  padding-top: 20px;
+}
+
+.save-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+  background-color: orange;
+  border-radius: 25px;
+}
+
+.present-button {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: white;
+  background-color: orange;
+  border-radius: 25px;
+}
+
+.pcard {
+  height: 150px;
+  width: auto;
+  background-color: white;
+  border-radius: 25px;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  max-width: 768px;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0 auto;
-  padding: 15px
+  margin-top: 15px;
+  text-align: center;
+  transition: all .2s ease-in-out;
+}
+
+.pcard:hover {
+  transform: scale(1.03);
+}
+
+.pcard-img {
+  max-width:100%;
+  max-height:100%;
+}
+
+.pcard-text {
+  padding-top: 25px;
+  color: black;
+}
+
+.pcard-button {
+  color: black;
+  background-color: orange;
+  border-radius: 25px;
 }
