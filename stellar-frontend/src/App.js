@@ -164,6 +164,19 @@ export default class App extends Component {
     )
   }
 
+  deleteResource = (id) => {
+    fetch(`http://localhost:3000/resources/${id}`,{
+        method:"DELETE"
+    })
+    let updatedList = this.state.currentResources.filter(resource=>!(resource.id===id))
+    let newOrder = updatedList.map((resource, index) => {
+        return Object.assign({}, resource, { ord_num: (index + 1) })
+    })
+    this.setState({
+        currentResources:newOrder
+    })
+  } 
+
   render() {
     //We have 2 routers -- one for logged in, and one for logged out 
     // in logged out -> '/' is log in component
@@ -189,6 +202,7 @@ export default class App extends Component {
             <Route exact path='/project' component={() => <Project 
               project={this.state.currentProject} 
               resources={this.state.currentResources}
+              deleteResource={this.deleteResource}
               />}
             />
 
@@ -201,6 +215,7 @@ export default class App extends Component {
           <div> 
             {/* Covers routing from logged in Router*/}
             <Route exact path='/login' render={routerProps => <Redirect to="/" />} />
+            <Route exact path='/project' render={routerProps => <Redirect to="/" />} />
 
             <Route exact path='/signup' render={routerProps => <Signup
              signup={this.signup}

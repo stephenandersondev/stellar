@@ -1,21 +1,20 @@
 class ResourcesController < ApplicationController
-    skip_before_action :authorized, only: [:init, :update]
+    skip_before_action :authorized, only: [:init, :update, :destroy]
     
-    def index
-    end
-
     def update
         resource = Resource.find(params[:id])
-        resource.update(ord_num: params[:ord_num])
+        resource.update(ord_num: params[:ord_num], content: params[:content])
         resource.save
     end
-
-    def 
 
     def init
         apod = Resource.get_apod
         projects = Project.all
         render json: {apod:apod, projects:projects}
+    end 
+
+    def destroy 
+        Resource.destroy(params[:id])
     end 
 
     def search
