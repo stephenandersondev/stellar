@@ -1,8 +1,16 @@
 class ResourcesController < ApplicationController
-    skip_before_action :authorized, only: [:init]
+    skip_before_action :authorized, only: [:init, :update]
     
     def index
     end
+
+    def update
+        resource = Resource.find(params[:id])
+        resource.update(ord_num: params[:ord_num])
+        resource.save
+    end
+
+    def 
 
     def init
         apod = Resource.get_apod

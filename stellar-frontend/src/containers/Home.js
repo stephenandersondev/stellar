@@ -13,8 +13,7 @@ export default class Home extends React.Component {
         super()
         this.state = {
             detailDisplay: false,
-            detailsItem: [],
-            items: []
+            detailsItem: []
         }
     }
 
@@ -31,17 +30,12 @@ export default class Home extends React.Component {
         })
     }
 
-    // componentDidMount() {
-    //     this.setState({
-    //         items: this.props.results.results.collection.items
-    //     })
-    // }
 
     render() {
 
-        // let returnItems
+        let returnItems
 
-        // this.props.results.length == 0 || this.props.results.results.collection.items.length == 0 ? returnItems = [] : returnItems = this.props.results.results.collection.items
+        this.props.results.length == 0 || this.props.results.results.collection.items.length == 0 ? returnItems = [] : returnItems = this.props.results.results.collection.items
 
         const breakPoints = [
             { width: 1, itemsToShow: 1 },
@@ -61,7 +55,7 @@ export default class Home extends React.Component {
                         <SearchBar searchChange={this.props.searchChange} />
                     </Container>
                     <Carousel className="carousel" breakPoints={breakPoints} disableArrowsOnEnd={true}>
-                        {this.state.items.filter(item => item.links).map(item => <Card
+                        {returnItems.filter(item => item.links).map(item => <Card
                         displayDetails={this.displayDetails}
                          item={item} />)}
                     </Carousel>
