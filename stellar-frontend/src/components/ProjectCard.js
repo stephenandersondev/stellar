@@ -16,7 +16,7 @@ export default class ProjectCard extends React.Component {
 
     handleCommit = (action, e) => {
         if (action === "delete") {
-            this.props.deleteResource(this.props.resource.id)
+            this.props.deleteResource(this.props.resource.id,e)
         } else if (action === "edit") {
             this.props.editResource(e,this.props.resource.id)
         }

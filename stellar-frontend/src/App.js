@@ -24,7 +24,8 @@ export default class App extends Component {
       currentResources: [],
       detailDisplay: false,
       detailsItem: [],
-      addedItem: false
+      addedItem: false,
+      modalOpen: false 
     }
   }
 
@@ -268,6 +269,12 @@ export default class App extends Component {
     else { return false }
   }
 
+  toggleModal = () => {
+    this.setState({
+        modalOpen: !this.state.modalOpen
+    })
+}
+
   render() {
     //We have 2 routers -- one for logged in, and one for logged out 
     // in logged out -> '/' is log in component
@@ -277,9 +284,13 @@ export default class App extends Component {
       return (
         <Router>
           <div>
-            <Container align='center' >
+            {this.state.modalOpen?null
+            :
+            <Container align='center' style={{background:'transparent'}} >
               <NavBar logout={this.logout} />
             </Container>
+            }
+
             {/* Covers routing from logged out Router */}
             <Route path='/signup' render={routerProps => <Redirect to="/" />} />
 
@@ -306,6 +317,8 @@ export default class App extends Component {
               editResource={this.editResource}
               reorder={this.reorderResources}
               apodImg={this.state.apodImg}
+              modalOpen={this.state.modalOpen}
+              toggleModal={this.toggleModal}
               />} />
 
           </div>
