@@ -221,27 +221,17 @@ button.rec-dot {
   left: 15px;
 }
 
-.modal-container { 
+..modal-container { 
   position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .modal-image {
-  /* max-height: 1000px;
-  width: 1000px;
-  align-items: center; */
-  /* height: 1000px; */
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto; */
-  /* width: 100vw; */
+  height: 1000px;
+  width: auto;
 }
 
 .project-carousel {
   padding-top: 50px;
-  justify-items: center;
 }
 
 .exit-display-button {
