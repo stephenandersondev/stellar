@@ -16,7 +16,7 @@ export default class ProjectCard extends React.Component {
 
     handleCommit = (action, e) => {
         if (action === "delete") {
-            this.props.deleteResource(this.props.resource.id)
+            this.props.deleteResource(this.props.resource.id,e)
         } else if (action === "edit") {
             this.props.editResource(e,this.props.resource.id)
         }
@@ -43,7 +43,7 @@ export default class ProjectCard extends React.Component {
                                 <input size="80" name="content" type='text' placeholder={resource.content}></input>
                                 <input style={{backgroundColor:"orange", color:"white"}} type='submit'></input>
                             </form>
-                            <button className="delete-button" onClick={() => this.handleCommit('delete')}>Delete</button>
+                            <button className="delete-button" onClick={(e) => this.handleCommit('delete', e)}>Delete</button>
                         </div>
                     }
                 </div>

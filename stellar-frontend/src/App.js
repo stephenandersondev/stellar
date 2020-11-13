@@ -185,7 +185,6 @@ export default class App extends Component {
 
   createResource = (item, e) => {
     e.preventDefault();
-    e.target.reset();
     let newResource = {
       content: e.target.content.value,
       url: item.links[0]["href"],
@@ -201,10 +200,11 @@ export default class App extends Component {
       },
       body: JSON.stringify(newResource)
     })
-      .then(this.setState({
-        currentResources: [...this.state.currentResources, newResource]
-      }))
+    .then(this.setState({
+      currentResources: [...this.state.currentResources, newResource]
+    }))
     this.exitDisplay()
+    e.target.reset();
   }
 
   saveResources = () => {
