@@ -38,12 +38,12 @@ export default class ProjectCard extends React.Component {
                             <button className="pcard-button" onClick={this.editContent}>Edit Content</button>
                         </div>
                         :
-                        <div>
+                        <div className="edit-form">
                             <form onSubmit={(e) => this.handleCommit('edit', e)}>
-                                <input name="content" type='text' placeholder={resource.content}></input>
-                                <input type='submit'></input>
+                                <input size="80" name="content" type='text' placeholder={resource.content}></input>
+                                <input style={{backgroundColor:"orange", color:"white"}} type='submit'></input>
                             </form>
-                            <button onClick={() => this.handleCommit('delete')}>Delete</button>
+                            <button className="delete-button" onClick={() => this.handleCommit('delete')}>Delete</button>
                         </div>
                     }
                 </div>

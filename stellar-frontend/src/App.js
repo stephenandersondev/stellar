@@ -266,6 +266,7 @@ export default class App extends Component {
               saveResources={this.saveResources}
               editResource={this.editResource}
               reorder={this.reorderResources}
+              apodImg={this.state.apodImg}
               />}
             />
 

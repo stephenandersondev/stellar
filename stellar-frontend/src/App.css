@@ -113,18 +113,33 @@
   visibility: hidden;
 }
 
+button.rec-dot {
+  color: white;
+}
+
 .details-display {
   background-color: #111;
-  height: 350px;
-  color: white
+  height: inherit;
+  color: white;
+  position: relative;
 }
+
+.project-page {
+  text-align: center;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+} 
 
 .project-container {
   background-color: #111;
-  height: 90vh;
-  margin-top: 20px;
-  color: orange;
+  margin-top: 50px;
+  color: white;
   position: relative;
+  padding-bottom: 30px;
+  min-height: 1200px;
 }
 
 .card-text {
@@ -133,6 +148,8 @@
 
 .resource-container {
   padding-top: 20px;
+  overflow-y: scroll;
+  overflow: hidden;
 }
 
 .save-button {
@@ -165,6 +182,7 @@
   margin-top: 15px;
   text-align: center;
   transition: all .2s ease-in-out;
+  position: relative;
 }
 
 .pcard:hover {
@@ -172,19 +190,35 @@
 }
 
 .pcard-img {
-  max-width:100%;
-  max-height:100%;
+  max-width: 200px;
+  max-height: auto;
 }
 
 .pcard-text {
   padding-top: 25px;
   color: black;
+  text-overflow: clip;
 }
 
 .pcard-button {
   color: black;
   background-color: orange;
   border-radius: 25px;
+  position: absolute;
+  bottom: 10px;
+  right: 420px;
+  height: 20px;
+  font-size: 12px;
+}
+
+.edit-form {
+  padding-top: 25px;
+}
+
+.delete-button {
+  margin-top: 10px;
+  background-color: orange;
+  color: white;
 }
 
 
@@ -208,3 +242,31 @@
 .project-carousel {
   padding-top: 50px;
 }
+
+.exit-display-button {
+  color: white;
+  background-color: orange;
+  border-radius: 25px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  }
+
+.exit-display-button:hover {
+  border-top-color: #0a1b26;
+  background: #0a1b26;
+  color: #f5edf5;
+  }
+  
+.exit-display-button:active {
+  border-top-color: #131b21;
+  background: #131b21;
+  }
+
+  .save-project-btn {
+    margin-bottom: 50px;
+  }
+
+  .navbar {
+    color: black;
+  }
