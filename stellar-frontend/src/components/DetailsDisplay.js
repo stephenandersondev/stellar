@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 
-const DetailsDisplay = ({ item, exitDisplay, visible, createResource }) => {
-    console.log(item);
+const DetailsDisplay = ({ item, exitDisplay, visible, createResource, addedItem, deleteResource }) => {
+
     if (!(Array.isArray(item))) {
         return (
             <div
@@ -14,19 +14,26 @@ const DetailsDisplay = ({ item, exitDisplay, visible, createResource }) => {
                 <p>{item.data[0]?.description}</p>
                 <button onClick={() => exitDisplay()}>Exit</button>
                 <Container>
-                    <Form onSubmit={(e) => createResource(item, e)}>
+                    <Form onSubmit={(e) => (addedItem) ? deleteResource(addedItem.id, e) : createResource(item, e)}>
                         <Form.Group controlId="textArea">
                             <Form.Label>Notes</Form.Label>
                             <Form.Control
                                 name="content"
                                 type="textarea"
-                                placeholder="Slide Content..."
-                                required
+                                placeholder={addedItem ? `${addedItem.content}` : "Slide Content..."}
+                                required={addedItem ? false : true}
+                                readOnly={addedItem ? true : false}
                             />
                         </Form.Group>
-                        <Button variant="success" type="submit">
-                            Save to Project
+                        {!(addedItem) ?
+                            <Button variant="success" type="submit">
+                                Save to Project
                         </Button>
+                            :
+                            <Button variant="danger" type="submit">
+                                Remove from Project
+                        </Button>}
+
                     </Form>
                 </Container>
             </div>
