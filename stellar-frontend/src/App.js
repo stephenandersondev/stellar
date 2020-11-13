@@ -8,7 +8,7 @@ import { Component } from 'react';
 import NavBar from './components/NavBar.js'
 import { BrowserRouter as Router, Route, Redirect, withRouter } from 'react-router-dom'
 import NewProject from './containers/NewProject';
-import { Toast } from 'react-bootstrap'
+import { Container } from 'react-bootstrap';
 
 export default class App extends Component {
 
@@ -277,9 +277,9 @@ export default class App extends Component {
       return (
         <Router>
           <div>
-
-            <NavBar logout={this.logout} />
-
+            <Container align='center' >
+              <NavBar logout={this.logout} />
+            </Container>
             {/* Covers routing from logged out Router */}
             <Route path='/signup' render={routerProps => <Redirect to="/" />} />
 
