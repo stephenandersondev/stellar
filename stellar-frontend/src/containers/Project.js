@@ -10,8 +10,7 @@ export default class Project extends React.Component {
         super()
         this.state = {
             resources: [],
-            focusedResource: '',
-            modalOpen: false
+            focusedResource: ''
         }
     }
 
@@ -22,11 +21,7 @@ export default class Project extends React.Component {
         })
     }
 
-    toggleModal = () => {
-        this.setState({
-            modalOpen: !this.state.modalOpen
-        })
-    }
+   
 
     render() {
         let { project } = this.props
@@ -37,11 +32,11 @@ export default class Project extends React.Component {
                 <Container className="project-container" align="center">
                     <h1>{project.title}</h1>
                     <button onClick={this.props.saveResources} className="save-button">Save</button>
-                    <button onClick={this.toggleModal} className="present-button">Present Project</button>
+                    <button onClick={this.props.toggleModal} className="present-button">Present Project</button>
                     <Modal
-                        isOpen={this.state.modalOpen}
+                        isOpen={this.props.modalOpen}
                         style={{ overlay: { backgroundColor: '#333' }, content: { color: "white", backgroundColor: "#111" } }}
-                        onRequestClose={this.toggleModal}
+                        onRequestClose={this.props.toggleModal}
                     >
                         <Container className="modal-container" align="center">
                             <h1>{project.title}</h1>
