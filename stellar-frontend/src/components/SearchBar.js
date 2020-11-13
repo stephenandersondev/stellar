@@ -2,8 +2,8 @@ import React from 'react'
 
 const SearchBar = ({searchChange}) => {
     return (
-        <form className="search-bar">
-            <input placeholder="search..." type="text" onChange={(e)=>searchChange(e)} />
+        <form className="search-bar-form">
+            <input className="search-bar-input" placeholder="search..." type="text" onChange={(e)=>searchChange(e)} />
         </form>
     )
 }

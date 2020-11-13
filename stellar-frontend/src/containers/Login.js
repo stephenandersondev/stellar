@@ -16,15 +16,15 @@ function Login(props) {
         <div className='home-screen' style={{
             background: `url(${props.apodImg}) no-repeat center center
         fixed`, backgroundRepeat:"no-repeat", backgroundSize:"cover", height:"100vh"}}>
-            <Container align="center">
+            <Container className="sign-in-container" align="center">
                 <Image src={Logo} alt="Logo" height="250" width="auto" />
                 <Form onSubmit={(props.login)}>
                     <Form.Group controlId="forUsername">
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label style={{color:"white"}}>Username</Form.Label>
                         <Form.Control type="text" placeholder="Username" required />
                     </Form.Group>
                     <Form.Group controlId="formPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label style={{color:"white"}}>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" required/>
                     </Form.Group>
                     <Button variant="primary" type="submit">Login</Button>

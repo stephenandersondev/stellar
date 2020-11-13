@@ -17,15 +17,15 @@ function NewProject(props) {
         <div className='home-screen' style={{
             background: `url(${props.apodImg}) no-repeat center center
         fixed`, backgroundRepeat:"no-repeat", backgroundSize:"cover", height:"100vh"}}>
-        <Container align="center">
+        <Container className="sign-in-container" align="center">
             <Image src={Logo} alt="Logo" height="250" width="auto" />
             <Form onSubmit={(props.newProject)} >
                 <Form.Group controlId="forTitle">
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label style={{color:"white"}}>Title</Form.Label>
                     <Form.Control type="text" placeholder="Title" required />
                 </Form.Group>
                 <Form.Group controlId="formDescription">
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label style={{color:"white"}}>Description</Form.Label>
                     <Form.Control type="text" placeholder="Description" required />
                 </Form.Group>
                 <Button variant="primary" type="submit" >Add Project</Button>

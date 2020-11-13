@@ -44,13 +44,13 @@ export default class Home extends React.Component {
         ]
 
         return (
-            <div className='home-screen' style={{
+            <div className='home-page' style={{
                 background: `url(${this.props.apodImg}) no-repeat center center
             fixed`, backgroundRepeat: "no-repeat", backgroundSize: "cover", height: "100vh"
             }}>
                 <Container align="center">
                     <Container className="search-logo">
-                        <Image src={Logo} alt="Logo" width="auto" height="200" />
+                        <Image src={Logo} alt="Logo" width="auto" height="250" />
                         <SearchBar searchChange={this.props.searchChange} />
                     </Container>
                     <Carousel className="carousel" breakPoints={breakPoints} disableArrowsOnEnd={true}>
