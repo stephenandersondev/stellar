@@ -6,13 +6,14 @@ const DetailsDisplay = ({ item, exitDisplay, visible, createResource, addedItem,
     if (!(Array.isArray(item))) {
         return (
             <div
+                onch
                 className="details-display"
                 style={{ visibility: visible ? "visible" : "hidden" }}
             >
                 <h1>{item.data[0]?.title}</h1>
                 <h5>Date: {item.data[0]?.date_created}</h5>
                 <p>{item.data[0]?.description}</p>
-                <button onClick={() => exitDisplay()}>Exit</button>
+                <button className="exit-display-button" onClick={() => exitDisplay()}>Exit</button>
                 <Container>
                     <Form onSubmit={(e) => (addedItem) ? deleteResource(addedItem.id, e) : createResource(item, e)}>
                         <Form.Group controlId="textArea">
@@ -26,8 +27,8 @@ const DetailsDisplay = ({ item, exitDisplay, visible, createResource, addedItem,
                             />
                         </Form.Group>
                         {!(addedItem) ?
-                            <Button variant="success" type="submit">
-                                Save to Project
+                            <Button className="save-project-btn" variant="success" type="submit">
+                            Save to Project
                         </Button>
                             :
                             <Button variant="danger" type="submit">

@@ -70,7 +70,7 @@
   background-color: #111;
   color: #333;
   font-size: 30px;
-  margin: 0 20px;
+  margin: 0 2px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,6 +81,7 @@
   max-width:100%;
   max-height:100%;
   background-color: #111;
+  color: #333;
 }
 
 .card:hover {
@@ -113,18 +114,24 @@
   visibility: hidden;
 }
 
+button.rec-dot {
+  color: white;
+}
+
 .details-display {
   background-color: #111;
-  height: 350px;
-  color: white
+  height: inherit;
+  color: white;
+  position: relative;
 }
 
 .project-container {
-  background-color: #111;
-  height: 90vh;
-  margin-top: 20px;
-  color: orange;
+  /* background-color: #111; */
+  /* background-color: #00FFFFFF; */
+  color: white;
   position: relative;
+  padding-bottom: 20px;
+  min-height: 1200px;
 }
 
 .card-text {
@@ -165,6 +172,8 @@
   margin-top: 15px;
   text-align: center;
   transition: all .2s ease-in-out;
+  position: relative;
+  border: 10px solid #111;
 }
 
 .pcard:hover {
@@ -172,19 +181,35 @@
 }
 
 .pcard-img {
-  max-width:100%;
-  max-height:100%;
+  max-width: 200px;
+  max-height: auto;
 }
 
 .pcard-text {
-  padding-top: 25px;
+  padding-top: 20px;
   color: black;
+  text-overflow: clip;
 }
 
 .pcard-button {
   color: black;
   background-color: orange;
   border-radius: 25px;
+  position: absolute;
+  bottom: 10px;
+  right: 420px;
+  height: 20px;
+  font-size: 12px;
+}
+
+.edit-form {
+  padding-top: 25px;
+}
+
+.delete-button {
+  margin-top: 10px;
+  background-color: orange;
+  color: white;
 }
 
 
@@ -196,7 +221,7 @@
   left: 15px;
 }
 
-.modal-container { 
+..modal-container { 
   position: relative;
 }
 
@@ -208,6 +233,38 @@
 .project-carousel {
   padding-top: 50px;
 }
+
+.exit-display-button {
+  color: white;
+  background-color: orange;
+  border-radius: 25px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  }
+
+.exit-display-button:hover {
+  border-top-color: #0a1b26;
+  background: #0a1b26;
+  color: #f5edf5;
+  }
+  
+.exit-display-button:active {
+  border-top-color: #131b21;
+  background: #131b21;
+  }
+
+  .save-project-btn {
+    margin-bottom: 50px;
+  }
+
+  .navbar {
+    color: black;
+  }
+
+  body {
+    height: 100vh;
+  }
 
 .nav-button {
   border-top: 1px solid #000000;

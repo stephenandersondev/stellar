@@ -31,14 +31,16 @@ export default class Project extends React.Component {
     render() {
         let { project } = this.props
         return (
-            <div style={{ backgroundColor: "black" }}>
+            <div style={{
+                background: `url(${this.props.apodImg}) no-repeat center center fixed`, backgroundRepeat: "no-repeat", backgroundSize: "cover"
+            }}>
                 <Container className="project-container" align="center">
                     <h1>{project.title}</h1>
                     <button onClick={this.props.saveResources} className="save-button">Save</button>
                     <button onClick={this.toggleModal} className="present-button">Present Project</button>
                     <Modal
                         isOpen={this.state.modalOpen}
-                        style={{ overlay: { backgroundColor: 'grey' }, content: { color: "orange", backgroundColor: "#111" } }}
+                        style={{ overlay: { backgroundColor: '#333' }, content: { color: "white", backgroundColor: "#111" } }}
                         onRequestClose={this.toggleModal}
                     >
                         <Container className="modal-container" align="center">
