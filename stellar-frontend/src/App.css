@@ -132,6 +132,7 @@ button.rec-dot {
   position: relative;
   padding-bottom: 20px;
   min-height: 1200px;
+  padding-top: 80px;
 }
 
 .card-text {
@@ -144,7 +145,7 @@ button.rec-dot {
 
 .save-button {
   position: absolute;
-  top: 15px;
+  top: 95px;
   right: 15px;
   color: white;
   background-color: orange;
@@ -153,7 +154,7 @@ button.rec-dot {
 
 .present-button {
   position: absolute;
-  top: 15px;
+  top: 95px;
   left: 15px;
   color: white;
   background-color: orange;
@@ -256,14 +257,6 @@ button.rec-dot {
 
   .save-project-btn {
     margin-bottom: 50px;
-  }
-
-  .navbar {
-    color: black;
-  }
-
-  body {
-    height: 100vh;
   }
 
 .nav-button {
