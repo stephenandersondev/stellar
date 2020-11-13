@@ -70,7 +70,7 @@
   background-color: #111;
   color: #333;
   font-size: 30px;
-  margin: 0 20px;
+  margin: 0 2px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,6 +81,7 @@
   max-width:100%;
   max-height:100%;
   background-color: #111;
+  color: #333;
 }
 
 .card:hover {
@@ -124,21 +125,12 @@ button.rec-dot {
   position: relative;
 }
 
-.project-page {
-  text-align: center;
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  background-size: cover;
-  background-position: center;
-} 
-
 .project-container {
-  background-color: #111;
-  margin-top: 50px;
+  /* background-color: #111; */
+  /* background-color: #00FFFFFF; */
   color: white;
   position: relative;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   min-height: 1200px;
 }
 
@@ -148,8 +140,6 @@ button.rec-dot {
 
 .resource-container {
   padding-top: 20px;
-  overflow-y: scroll;
-  overflow: hidden;
 }
 
 .save-button {
@@ -183,6 +173,7 @@ button.rec-dot {
   text-align: center;
   transition: all .2s ease-in-out;
   position: relative;
+  border: 10px solid #111;
 }
 
 .pcard:hover {
@@ -195,7 +186,7 @@ button.rec-dot {
 }
 
 .pcard-text {
-  padding-top: 25px;
+  padding-top: 20px;
   color: black;
   text-overflow: clip;
 }
@@ -235,12 +226,19 @@ button.rec-dot {
 }
 
 .modal-image {
-  height: 1000px;
-  width: auto;
+  /* max-height: 1000px;
+  width: 1000px;
+  align-items: center; */
+  /* height: 1000px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100vw;
 }
 
 .project-carousel {
   padding-top: 50px;
+  justify-items: center;
 }
 
 .exit-display-button {
@@ -269,4 +267,8 @@ button.rec-dot {
 
   .navbar {
     color: black;
+  }
+
+  body {
+    height: 100vh;
   }

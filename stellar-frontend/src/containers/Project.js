@@ -31,9 +31,8 @@ export default class Project extends React.Component {
     render() {
         let { project } = this.props
         return (
-            <div className="project-page" style={{
-                background: `url(${this.props.apodImg}) no-repeat center center
-            fixed`, backgroundRepeat: "no-repeat", backgroundSize: "cover", height: "100vh"
+            <div style={{
+                background: `url(${this.props.apodImg}) no-repeat center center fixed`, backgroundRepeat: "no-repeat", backgroundSize: "cover"
             }}>
                 <Container className="project-container" align="center">
                     <h1>{project.title}</h1>
