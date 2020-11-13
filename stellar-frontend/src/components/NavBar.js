@@ -16,6 +16,6 @@ const Navbar = (props) =>
         exact
         onClick={props.logout}
         >Logout</NavLink>
-    </div>;
+  </div>;
 
 export default Navbar

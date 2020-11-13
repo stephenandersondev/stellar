@@ -4,31 +4,10 @@ import Carousel from 'react-elastic-carousel'
 import DetailDisplay from '../components/DetailsDisplay.js'
 import Card from '../components/Card.js'
 import Logo from '../assets/img/stellar-logo.png'
-import { Container, Image } from 'react-bootstrap'
+import { Container, Image} from 'react-bootstrap'
 
 
 export default class Home extends React.Component {
-
-    constructor() {
-        super()
-        this.state = {
-            detailDisplay: false,
-            detailsItem: []
-        }
-    }
-
-    displayDetails = (resource) => {
-        this.setState({
-            detailDisplay: true,
-            detailsItem: resource
-        })
-    }
-
-    exitDisplay = () => {
-        this.setState({
-            detailDisplay: false
-        })
-    }
 
     render() {
 
@@ -55,14 +34,16 @@ export default class Home extends React.Component {
                     </Container>
                     <Carousel className="carousel" breakPoints={breakPoints} disableArrowsOnEnd={true}>
                         {returnItems.filter(item => item.links).map(item => <Card
-                        displayDetails={this.displayDetails}
+                        displayDetails={this.props.displayDetails}
                          item={item} />)}
                     </Carousel>
                     <DetailDisplay
-                    item={this.state.detailsItem}
-                    exitDisplay={this.exitDisplay}
-                    visible={this.state.detailDisplay}
+                    item={this.props.detailsItem}
+                    exitDisplay={this.props.exitDisplay}
+                    visible={this.props.detailDisplay}
+                    addedItem={this.props.addedItem}
                     createResource={this.props.createResource}
+                    deleteResource={this.props.deleteResource}
                       />
                 </Container>
             </div >
