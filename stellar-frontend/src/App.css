@@ -223,6 +223,9 @@ button.rec-dot {
 
 .modal-container { 
   position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .modal-image {
@@ -230,10 +233,10 @@ button.rec-dot {
   width: 1000px;
   align-items: center; */
   /* height: 1000px; */
-  display: block;
+  /* display: block;
   margin-left: auto;
-  margin-right: auto;
-  width: 100vw;
+  margin-right: auto; */
+  /* width: 100vw; */
 }
 
 .project-carousel {
