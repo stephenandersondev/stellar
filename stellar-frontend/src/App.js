@@ -226,10 +226,11 @@ export default class App extends Component {
     let newContent = e.target[0].value
     let updatedResource = this.state.currentResources.filter(resource => resource.id === id)[0]
     updatedResource.content = newContent
+    console.log(updatedResource)
+    let newResource = this.state.currentResources.map(resource =>
+      resource.id === updatedResource.id ? updatedResource : resource)
     this.setState({
-      currentResources: this.state.currentResources.map(resource =>
-        resource.id === updatedResource.id ? updatedResource : resource
-      )
+      currentResources: newResource
     })
   }
 
