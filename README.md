@@ -1,12 +1,12 @@
 Stellar App 
 ========================
-![monkey-jump-gameplay](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/gameplay.gif?raw=true)
+![stellar-search](https://github.com/stephenandersondev/stellar-app/blob/master/stellar-frontend/src/assets/img/search-gif.gif?raw=true)
 ## About
 
 Welcome to Stellar! This app was developed by Stephen Anderson (@stephenandersondev) and Ben Looper (@BenLooper) as part of week 12 of the Flatiron School Software Engineering program. It utilizes a React frontend and a Ruby on Rails backend.
 
 ## Demo Video
-https://youtu.be/Y8FDJfGZjWw
+https://youtu.be/i7R7HOpHyKs
 
 ## Installation
 
@@ -33,16 +33,20 @@ $ npm install
 $ npm start
 ```
 ## Usage
-You should now be brought to the login screen. Enter your desired username and login! 
+You should now be brought to the login screen. Here you can create a new account, create a new project for you to use for your new account, or login with an existing account! 
 
-![monkey-jump-login](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/login.gif?raw=true)
+![stellar-login](https://github.com/stephenandersondev/stellar-app/blob/master/stellar-frontend/src/assets/img/login-gif.gif?raw=true)
 
-After logging in you will see the game screen and user panel which will show your top 5 scores. Press 'START' to begin the game and use the arrow keys to move the monkey left, right, or straight ahead.
+After logging in, you will be brought to the home screen where you can search and browse through NASA's library of resources. When you find one that interests you, click it, then you can view its details or even add some notes and assign it to your project.
 
-The game is over when the monkey falls. Your score is based on how many platforms you pass, and will be displayed to you after the game is over. 
+![stellar-search](https://github.com/stephenandersondev/stellar-app/blob/master/stellar-frontend/src/assets/img/search-gif.gif?raw=true)
 
- ![monkey-jump-gameplay](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/gameplay.gif?raw=true)
+On the project screen, you can view all the resources that have been assigned to your project. Here you can edit, delete, or even re-order them to your liking.
 
-Feel free to play the game as many times as you like. If you get into the top 10 scores on your database your name will be displayed on the homepage!
+ ![stellar-project](https://github.com/stephenandersondev/stellar-app/blob/master/stellar-frontend/src/assets/img/project-gif.gif?raw=true)
+
+Once you have everything to your liking, you can click the "Present Project" button to enter presentation mode and show off your project!
+
+ ![stellar-present](https://github.com/stephenandersondev/stellar-app/blob/master/stellar-frontend/src/assets/img/present-gif.gif?raw=true)
 
 We hope you enjoy building learning about space in Stellar! 😊
