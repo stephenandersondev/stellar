@@ -3,7 +3,7 @@ Stellar App
 ![stellar-search](https://github.com/stephenandersondev/stellar-app/blob/master/stellar-frontend/src/assets/img/search-gif.gif?raw=true)
 ## About
 
-Welcome to Stellar! This app was developed by Stephen Anderson (@stephenandersondev) and Ben Looper (@BenLooper) as part of week 12 of the Flatiron School Software Engineering program. It utilizes a React frontend and a Ruby on Rails backend.
+Welcome to Stellar! This app was developed by Stephen Anderson (@stephenandersondev) and Ben Looper (@BenLooper) as part of week 12 of the Flatiron School Software Engineering program. It is an educational platform for students to research, create, and present space science projects. It utilizes a React frontend and a Ruby on Rails backend.
 
 ## Demo Video
 https://youtu.be/i7R7HOpHyKs
