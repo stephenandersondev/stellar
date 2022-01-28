@@ -1,4 +1,4 @@
-Stellar App 
+Stellar
 ========================
 ![stellar-search](https://github.com/stephenandersondev/stellar-app/blob/master/stellar-frontend/src/assets/img/search-gif.gif?raw=true)
 ## About
